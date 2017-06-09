@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+  	<display-name>UserRegisterServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.controller.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserRegisterServlet</servlet-name>
+  	<url-pattern>/UserRegisterServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
