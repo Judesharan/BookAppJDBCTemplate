@@ -31,7 +31,7 @@ public class BookInventoryDAO {
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
  
         // 2. Query
-		String sql = "update bookSales set status = 'Out of stock' where ((select quantity from bookInventory where isbn = ?) > 0)";
+		String sql = "update bookInventory set status = 'Out of stock' where ((select quantity from bookInventory where isbn = ?) > 0)";
 		
 		// 3. Set the input and Query execute 
 		try {
