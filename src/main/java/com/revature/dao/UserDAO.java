@@ -14,7 +14,7 @@ public class UserDAO {
 		JdbcTemplate jdbcTemplate = ConnectionUtil.getJdbcTemplate();
  
         // 2. Query
-        String sql = "insert into user (id , name, username , password ,mobile_no , email_ID , active, role_ID) values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into book (id , name, username , password ,mobile_no , email_ID , active, role_ID) values (?,?,?,?,?,?,?,?)";
  
         // 3. Set the input and Query execute
         int rows = jdbcTemplate.update(sql, user.getId(), user.getName(), user.getUserName(), user.getPassword(), user.getMobileNumber(), user.getEmailID(), user.getActive(), user.getRoleId());
