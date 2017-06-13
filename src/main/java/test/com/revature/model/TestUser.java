@@ -1,9 +1,11 @@
 package test.com.revature.model;
 
+import org.apache.log4j.Logger;
+
 import com.revature.model.User;
 
 public class TestUser {
-	
+	final static Logger logger = Logger.getLogger(TestUser.class);
 	public static void main(String[] args) {
 		
 		User user1 = new User();
@@ -16,14 +18,14 @@ public class TestUser {
 		user1.setActive("A");
 		user1.setRoleId(100);
 		
-		System.out.println("ID = " + user1.getId());
-		System.out.println("Name = " + user1.getName());
-		System.out.println("UserName = " + user1.getUserName());
-		System.out.println("Password = " + user1.getPassword());
-		System.out.println("Mobile Number = " + user1.getMobileNumber());
-		System.out.println("Email ID = " + user1.getEmailID());
-		System.out.println("Active = " + user1.getActive());
-		System.out.println("Role ID = " + user1.getRoleId());
+		logger.info("ID = " + user1.getId());
+		logger.info("Name = " + user1.getName());
+		logger.info("UserName = " + user1.getUserName());
+		logger.info("Password = " + user1.getPassword());
+		logger.info("Mobile Number = " + user1.getMobileNumber());
+		logger.info("Email ID = " + user1.getEmailID());
+		logger.info("Active = " + user1.getActive());
+		logger.info("Role ID = " + user1.getRoleId());
 		
 	}
 }

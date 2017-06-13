@@ -1,12 +1,13 @@
 package com.revature.dao;
 
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.revature.model.BookRatings;
 import com.revature.util.ConnectionUtil;
 
 public class BookRatingsDAO {
-	
+	final static Logger logger = Logger.getLogger(BookRatingsDAO.class);
 	/* Users can provide ratings for the book */
 	
 	public void addRating(BookRatings bookRatings) throws Exception {
@@ -18,6 +19,6 @@ public class BookRatingsDAO {
 		
 		// 3. Set the input and Query execute
 		int rows = jdbcTemplate.update(sql, bookRatings.getRating(), bookRatings.getIsbn());
-		System.out.println("No of rows updated : " + rows);
+		logger.info("No of rows updated : " + rows);
 	}
 }

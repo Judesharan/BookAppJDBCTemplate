@@ -2,9 +2,12 @@ package test.com.revature.model;
 
 import java.time.LocalDate;
 
+import org.apache.log4j.Logger;
+
 import com.revature.model.Book;
 
 public class TestBook {
+	final static Logger logger = Logger.getLogger(TestBook.class);
 	public static void main(String[] args) {
 		Book book1 = new Book();
 		book1.setIsbn(9788700631625l);
@@ -15,6 +18,6 @@ public class TestBook {
 		book1.setPrice(1200);
 		book1.setStatus("published");
 		
-		System.out.println(book1.toString());
+		logger.info(book1.toString());
 	}
 }

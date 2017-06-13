@@ -2,6 +2,7 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,6 +12,7 @@ import com.revature.util.ConnectionUtil;
 
 public class BookOrderDAO {
 
+	final static Logger logger = Logger.getLogger(BookOrderDAO.class);
 	/* User can able to view the available books and place an order */
 	
 	public void orderBook(BookSales bookSales) throws Exception {
@@ -23,7 +25,7 @@ public class BookOrderDAO {
 		
         // 3. Set the input and Query Execute
         List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class));
-		System.out.println(books);
+		logger.info(books);
 		
 		//For Placing an order
 		// 2. Query
@@ -31,9 +33,9 @@ public class BookOrderDAO {
 		
 		// 3. Set the input and Query Execute
 		int rows = jdbcTemplate.update(orderSql, bookSales.getSalesID(), bookSales.getUserID(), bookSales.getIsbn(), bookSales.getQuantity(), bookSales.getPrice(), bookSales.getTotalAmount(), bookSales.getOrderDate(), bookSales.getStatus());
-		System.out.println("No of rows inserted: " + rows);
+		logger.info("No of rows inserted: " + rows);
 		if(rows == 1)
-			System.out.println("Order Successful!!");
+			logger.info("Order Successful!!");
 	}
 	
 	/* User can select the quantity of books */ 
@@ -48,7 +50,7 @@ public class BookOrderDAO {
 		
 		// 3. Set the input and Query execute
 		int rows = jdbcTemplate.update(sql, bookSales.getQuantity(), bookSales.getSalesID(), bookSales.getUserID());
-		System.out.println("No of rows inserted: " + rows);
+		logger.info("No of rows inserted: " + rows);
 	}
 	
 	/* User can cancel the book order */
@@ -61,8 +63,8 @@ public class BookOrderDAO {
 			
 		// 3. Set the input and Query execute
 		int rows =jdbcTemplate.update(sql, bookSales.getSalesID(), bookSales.getUserID());
-		System.out.println("No of rows Updated: " + rows);
+		logger.info("No of rows Updated: " + rows);
 		if(rows == 1)
-			System.out.println("Order Cancelled!!");
+			logger.info("Order Cancelled!!");
 		}
 }

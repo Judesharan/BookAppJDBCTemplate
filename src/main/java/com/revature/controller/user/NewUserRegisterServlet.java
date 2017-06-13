@@ -1,4 +1,4 @@
-package com.revature.controller;
+package com.revature.controller.user;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,15 +10,15 @@ import com.revature.dao.UserDAO;
 import com.revature.model.User;
 
 /**
- * Servlet implementation class UserRegisterServlet
+ * Servlet implementation class NewUserRegisterServlet
  */
-public class UserRegisterServlet extends HttpServlet {
+public class NewUserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserRegisterServlet() {
+    public NewUserRegisterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class UserRegisterServlet extends HttpServlet {
 		user.setName(request.getParameter("name"));
 		user.setUserName(request.getParameter("userName"));
 		user.setPassword(request.getParameter("password"));
-		user.setMobileNumber(Long.parseLong("mobileNumber"));
+		user.setMobileNumber(Long.parseLong(request.getParameter("mobileNumber")));
 		user.setEmailID(request.getParameter("emailID"));
 		user.setActive("A");
 		user.setRoleId(Integer.parseInt(request.getParameter("roleID")));
@@ -57,4 +57,5 @@ public class UserRegisterServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
 }

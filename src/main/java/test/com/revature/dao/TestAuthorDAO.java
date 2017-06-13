@@ -8,7 +8,7 @@ import com.revature.model.Book;
 public class TestAuthorDAO {
 	public static void main(String[] args) {
 		Book book = new Book();
-		book.setIsbn(9788700631625l);
+		book.setIsbn(9788700631689l);
 		book.setTitle("Harry potter");
 		book.setAuthor("JK rowling");
 		book.setPublishDate(LocalDate.parse("1990-12-01"));

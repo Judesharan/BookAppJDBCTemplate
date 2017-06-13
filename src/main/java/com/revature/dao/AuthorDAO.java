@@ -2,16 +2,17 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.revature.model.Book;
 import com.revature.util.ConnectionUtil;
 
+
 public class AuthorDAO {
 
-	/* Author can create a book */
-	
+	final static Logger logger = Logger.getLogger(AuthorDAO.class);
 	public void insertBook(Book book) throws Exception {
 	 
 		// 1. Get the connection
@@ -22,7 +23,7 @@ public class AuthorDAO {
 
 		// 3. Set the input and Query execute
 		int rows = jdbcTemplate.update(sql, book.getIsbn(), book.getTitle(), book.getAuthor(), book.getPublishDate(), book.getContent(), book.getPrice(), book.getStatus());
-		System.out.println("No of rows inserted: " + rows);
+		logger.info("No of rows inserted: " + rows);
 	}
 
 	/* Author can upload the contents of book */
@@ -37,7 +38,7 @@ public class AuthorDAO {
 		
 		// 3. Set the input and Query execute
 		int rows = jdbcTemplate.update(sql, book.getContent(), book.getIsbn());
-		System.out.println("No. of rows Updated : " + rows);
+		logger.info("No. of rows Updated : " + rows);
 	}
 
 	/* Author can view the book and contents */
@@ -52,7 +53,7 @@ public class AuthorDAO {
 		
 		// 3. Set the input and Query execute
 		List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class), book.getIsbn());
-		System.out.println(books);;
+		logger.info(books);;
 	}
 
 	/* Author can delete the book */
@@ -67,7 +68,7 @@ public class AuthorDAO {
 		
 		// 3. Set the input and Query execute
 		int rows = jdbcTemplate.update(sql, book.getIsbn());
-		System.out.println("No. of rows Deleted : " + rows);
+		logger.info("No. of rows Deleted : " + rows);
 	}
 
 	/* Author can view all his books */
@@ -82,7 +83,7 @@ public class AuthorDAO {
 		
 		// 3. Set the input and Query execute
 		List<Book> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Book>(Book.class), book.getAuthor());
-		System.out.println(books);;
+		logger.info(books);;
 	}
 
 }

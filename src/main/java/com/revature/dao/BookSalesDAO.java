@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -10,6 +11,8 @@ import com.revature.model.BookSales;
 import com.revature.util.ConnectionUtil;
 
 public class BookSalesDAO {
+	
+	final static Logger logger = Logger.getLogger(BookSalesDAO.class);
 	
 	/* Author can able to view- how many books sold */
 	/* Weekly */
@@ -23,7 +26,7 @@ public class BookSalesDAO {
 		
 		// 3. Set the input and Query execute
 		List<BookSales> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<BookSales>(BookSales.class), searchDate, searchDate);
-		System.out.println(books);
+		logger.info(books);
 	}
 	
 	/* Monthly */
@@ -36,7 +39,7 @@ public class BookSalesDAO {
 		
 		// 3. Set the input and Query execute
 		List<BookSales> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<BookSales>(BookSales.class), searchDate);
-		System.out.println(books);
+		logger.info(books);
 
 	}
 	
@@ -50,7 +53,7 @@ public class BookSalesDAO {
 		
 		// 3. Set the input and Query execute
 		List<BookSales> books = jdbcTemplate.query(sql, new BeanPropertyRowMapper<BookSales>(BookSales.class), searchDate);
-		System.out.println(books);
+		logger.info(books);
 	}
 }
 

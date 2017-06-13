@@ -2,9 +2,12 @@ package test.com.revature.model;
 
 import java.time.LocalDate;
 
+import org.apache.log4j.Logger;
+
 import com.revature.model.BookSales;
 
 public class TestBookSales {
+	final static Logger logger = Logger.getLogger(TestBookSales.class);
 	public static void main(String[] args) {
 		BookSales bookSales1 = new BookSales();
 		
@@ -17,13 +20,13 @@ public class TestBookSales {
 		bookSales1.setOrderDate(LocalDate.parse("2017-06-06"));
 		bookSales1.setStatus("Shipped");
 		
-		System.out.println("Sales ID = " + bookSales1.getSalesID());
-		System.out.println("User ID = " + bookSales1.getUserID());
-		System.out.println("ISBN = " + bookSales1.getIsbn());
-		System.out.println("Quantity = " + bookSales1.getQuantity());
-		System.out.println("Price = " + bookSales1.getPrice());
-		System.out.println("Total Amount = " + bookSales1.getTotalAmount());
-		System.out.println("Order Date = " + bookSales1.getOrderDate());
-		System.out.println("Status = " + bookSales1.getStatus());
+		logger.info("Sales ID = " + bookSales1.getSalesID());
+		logger.info("User ID = " + bookSales1.getUserID());
+		logger.info("ISBN = " + bookSales1.getIsbn());
+		logger.info("Quantity = " + bookSales1.getQuantity());
+		logger.info("Price = " + bookSales1.getPrice());
+		logger.info("Total Amount = " + bookSales1.getTotalAmount());
+		logger.info("Order Date = " + bookSales1.getOrderDate());
+		logger.info("Status = " + bookSales1.getStatus());
 	}
 }
